@@ -1,7 +1,7 @@
 <?php namespace willvincent\Feeds;
 
 use Illuminate\Support\Arr;
-use SimplePie;
+use SimplePie\SimplePie;
 
 class FeedsFactory
 {
@@ -10,12 +10,12 @@ class FeedsFactory
      *
      * @var array
      */
-    protected $config;
+    protected array $config;
 
     /**
      * @var SimplePie
      */
-    protected $simplePie;
+    protected SimplePie $simplePie;
 
     /**
      * FeedsFactory constructor.
@@ -29,12 +29,12 @@ class FeedsFactory
 
     /**
      * @param array $feedUrl RSS URL
-     * @param int   $limit    items returned per-feed with multifeeds
+     * @param int   $limit    items returned per-feed with multi feeds
      * @param bool  $forceFeed
-     * @param null  $options
+     * @param array|null  $options
      * @return simplePie
      */
-    public function make($feedUrl = [], $limit = 0, $forceFeed = false, $options = null)
+    public function make(array $feedUrl = [], int $limit = 0, bool $forceFeed = false, ?array $options = null): SimplePie
     {
         $this->simplePie = new SimplePie();
         $this->configure();
@@ -63,7 +63,7 @@ class FeedsFactory
             $this->simplePie->set_timeout($this->config['curl.timeout']);
         }
 
-        if (isset($options) && is_array($options)) {
+        if (isset($options)) {
             if (isset($options['curl.options']) && is_array($options['curl.options'])) {
                 $this->simplePie->set_curl_options($this->simplePie->curl_options + $options['curl.options']);
             }
@@ -91,7 +91,7 @@ class FeedsFactory
      *
      * @return void
      */
-    protected function configure()
+    protected function configure(): void
     {
         $curlOptions = [];
 
@@ -101,6 +101,10 @@ class FeedsFactory
             $this->simplePie->set_cache_location($this->config['cache.location']);
             $this->simplePie->set_cache_duration($this->config['cache.life']);
         }
+
+	    if (isset($this->config['user_agent']) && !empty($this->config['user_agent'])) {
+		    $this->simplePie->set_useragent($this->config['user_agent']);
+	    }
 
         if (isset($this->config['curl.options']) && is_array($this->config['curl.options'])) {
             $curlOptions += $this->config['curl.options'];
