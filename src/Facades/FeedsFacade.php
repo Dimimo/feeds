@@ -1,6 +1,6 @@
 <?php
 
-namespace willvincent\Feeds\Facades;
+namespace Dimimo\Feeds\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
