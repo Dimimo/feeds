@@ -2,6 +2,7 @@
     "name": "dimimo/feeds",
     "description": "Laravel 5 Service Provider for the SimplePie library",
     "license": "MIT",
+    "homepage": "https://github.com/Dimimo/feeds",
     "authors": [
         {
             "name": "Will Vincent",
@@ -9,7 +10,9 @@
         },
         {
             "name": "Dimitri Mostrey",
-            "email": "admin@puertoparrot.com"
+            "email": "admin@puertoparrot.com",
+            "homepage": "https://www.puertoparrot.com",
+            "role": "Maintainer"
         }
     ],
     "require": {
@@ -26,7 +29,7 @@
     "autoload-dev": {
         "psr-4": {
             "App\\": "tests/",
-            "Dimimo\\Feeds\\": "tests/"
+            "Dimimo\\Feeds\\Tests\\": "tests/"
         }
     },
     "extra": {
