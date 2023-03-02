@@ -1,16 +1,10 @@
 # Laravel Feeds
 
-[![Latest Stable Version](https://poser.pugx.org/willvincent/feeds/v/stable.svg)](https://packagist.org/packages/willvincent/feeds)
-[![SensioLabsInsight](https://img.shields.io/sensiolabs/i/9098208d-abd1-44ea-af47-a0c42a01cb75.svg?style=flat-square)](https://insight.sensiolabs.com/projects/9098208d-abd1-44ea-af47-a0c42a01cb75)
-[![License](https://poser.pugx.org/willvincent/feeds/license.svg)](https://packagist.org/packages/willvincent/feeds)
-
-[![Total Downloads](https://poser.pugx.org/willvincent/feeds/downloads.svg)](https://packagist.org/packages/willvincent/feeds) [![Monthly Downloads](https://poser.pugx.org/willvincent/feeds/d/monthly.png)](https://packagist.org/packages/willvincent/feeds) [![Daily Downloads](https://poser.pugx.org/willvincent/feeds/d/daily.png)](https://packagist.org/packages/willvincent/feeds)
-
-A simple [Laravel 5/6/7/8](http://www.laravel.com/) service provider for including the [SimplePie](http://www.simplepie.org) library.
+A simple [Laravel 5/6/7/8/9/10](http://www.laravel.com/) service provider for including the [SimplePie](http://www.simplepie.org) library.
 
 ## Installation
 
-The Laravel 5/6/7/8 Feeds Service Provider can be installed via [Composer](http://getcomposer.org) by requiring the
+The Laravel 5/6/7/8/9/10 Feeds Service Provider can be installed via [Composer](http://getcomposer.org) by requiring the
 `willvincent/feeds` package in your project's `composer.json`.
 
 ```json
