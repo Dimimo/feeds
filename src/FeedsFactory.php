@@ -28,20 +28,21 @@ class FeedsFactory
     }
 
     /**
-     * @param array $feedUrl RSS URL
-     * @param int   $limit    items returned per-feed with multi feeds
-     * @param bool  $forceFeed
-     * @param array|null  $options
+     * @param array|string $feedUrl RSS URL
+     * @param int          $limit   items returned per-feed with multi feeds
+     * @param bool         $forceFeed
+     * @param array|null   $options
+     *
      * @return simplePie
      */
-    public function make(array $feedUrl = [], int $limit = 0, bool $forceFeed = false, ?array $options = null): SimplePie
+    public function make(array|string $feedUrl = [], int $limit = 0, bool $forceFeed = false, ?array $options = null): SimplePie
     {
         $this->simplePie = new SimplePie();
         $this->configure();
         $this->simplePie->set_feed_url($feedUrl);
         $this->simplePie->set_item_limit($limit);
-
-        if ($forceFeed === true) {
+        if ($forceFeed === true)
+        {
             $this->simplePie->force_feed(true);
         }
 
