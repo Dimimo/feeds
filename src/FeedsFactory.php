@@ -99,7 +99,7 @@ class FeedsFactory
         if ($this->config['cache.disabled']) {
             $this->simplePie->enable_cache(false);
         } else {
-            $this->simplePie->set_cache_location($this->config['cache.location']);
+            $this->simplePie->set_cach($this->config['cache.location']);
             $this->simplePie->set_cache_duration($this->config['cache.life']);
         }
 

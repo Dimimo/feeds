@@ -9,14 +9,14 @@ class FeedsServiceProvider extends ServiceProvider
      *
      * @var bool
      */
-    protected $defer = true;
+    protected bool $defer = true;
 
     /**
      * Bootstrap any application services.
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->publishes([
             __DIR__ . '/config/feeds.php' => config_path('feeds.php'),
@@ -28,7 +28,7 @@ class FeedsServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->app->singleton('Feeds', function () {
             $config = config('feeds');
@@ -46,7 +46,7 @@ class FeedsServiceProvider extends ServiceProvider
      *
      * @return array
      */
-    public function provides()
+    public function provides(): array
     {
         return ['Feeds'];
     }
