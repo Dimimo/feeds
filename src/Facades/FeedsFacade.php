@@ -3,6 +3,7 @@
 namespace Dimimo\Feeds\Facades;
 
 use Illuminate\Support\Facades\Facade;
+use RuntimeException;
 
 class FeedsFacade extends Facade
 {
@@ -11,7 +12,7 @@ class FeedsFacade extends Facade
      *
      * @return string
      *
-     * @throws \RuntimeException
+     * @throws RuntimeException
      */
     protected static function getFacadeAccessor(): string
     {
