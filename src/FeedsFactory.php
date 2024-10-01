@@ -28,21 +28,20 @@ class FeedsFactory
     }
 
     /**
-     * @param array|string $feedUrl RSS URL
-     * @param int          $limit   items returned per-feed with multi feeds
-     * @param bool         $forceFeed
-     * @param array|null   $options
-     *
+     * @param array $feedUrl RSS URL
+     * @param int $limit    items returned per-feed with multi feeds
+     * @param bool $forceFeed
+     * @param null  $options
      * @return simplePie
      */
-    public function make(array|string $feedUrl = [], int $limit = 0, bool $forceFeed = false, ?array $options = null): SimplePie
+    public function make(array $feedUrl = [], int $limit = 0, bool $forceFeed = false, $options = null): SimplePie
     {
         $this->simplePie = new SimplePie();
         $this->configure();
         $this->simplePie->set_feed_url($feedUrl);
         $this->simplePie->set_item_limit($limit);
-        if ($forceFeed === true)
-        {
+
+        if ($forceFeed === true) {
             $this->simplePie->force_feed(true);
         }
 
@@ -64,7 +63,7 @@ class FeedsFactory
             $this->simplePie->set_timeout($this->config['curl.timeout']);
         }
 
-        if (isset($options)) {
+        if (isset($options) && is_array($options)) {
             if (isset($options['curl.options']) && is_array($options['curl.options'])) {
                 $this->simplePie->set_curl_options($this->simplePie->curl_options + $options['curl.options']);
             }
@@ -103,9 +102,9 @@ class FeedsFactory
             $this->simplePie->set_cache_duration($this->config['cache.life']);
         }
 
-	    if (isset($this->config['user_agent']) && !empty($this->config['user_agent'])) {
-		    $this->simplePie->set_useragent($this->config['user_agent']);
-	    }
+        if (isset($this->config['user_agent']) && !empty($this->config['user_agent'])) {
+            $this->simplePie->set_useragent($this->config['user_agent']);
+        }
 
         if (isset($this->config['curl.options']) && is_array($this->config['curl.options'])) {
             $curlOptions += $this->config['curl.options'];

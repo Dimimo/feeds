@@ -1,6 +1,7 @@
 <?php namespace Dimimo\Feeds;
 
 use Illuminate\Support\ServiceProvider;
+use RunTimeException;
 
 class FeedsServiceProvider extends ServiceProvider
 {
@@ -30,15 +31,16 @@ class FeedsServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton('Feeds', function () {
+        $this->app->singleton(FeedsFactory::class, function () {
             $config = config('feeds');
 
             if (! $config) {
-                throw new \RunTimeException('Feeds configuration not found. Please run `php artisan vendor:publish`');
+                throw new RunTimeException('Feeds configuration not found. Please run `php artisan vendor:publish`');
             }
 
             return new FeedsFactory($config);
         });
+        $this->app->alias(FeedsFactory::class, 'Feeds');
     }
 
     /**
